@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="brand">
+                <a href="#">Artist Name</a>
+            </div>
+            <nav>
+                <div class="nav-mobile">
+                    <a href="#" id="nav-toggle">
+                        <span></span>
+                    </a>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Artist</a></li>
+                    <li><a href="#gallary">Gallary</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Segoe UI;
+        }
+        
+        .nav-bar{
+            height: 70px;
+            background: white;
+            color: black;
+            border: 1px solid black;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        .brand{
+            float: left;
+            position: absolute;
+            padding-left: 20px;
+            line-height: 70px;
+            font-size: 1.5em;
+        }
+        
+        .brand a{
+            text-decoration: none;
+            color: black;
+        }
+        
+        .nav-container{
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        nav{
+            float: right;
+        }
+        
+        nav ul{
+            list-style: none;
+        }
+        
+        nav ul li{
+            float: left;
+            position: relative;
+        }
+        
+        nav ul li a{
+            display: block;
+            padding: 0 20px;
+            line-height: 70px;
+            background: white;
+            text-decoration: none;
+            color: black;
+        }
+        
+        nav ul li a:hover{
+            color: black;
+        }
+        
+        nav ul li a:not(:only-child):after{
+            content: '▼';
+            padding-left: 5px;
+        }
+        
+        nav ul li ul li {
+            min-width: 190px;
+        }
+        
+        nav ul li ul li a{
+            padding: 15px;
+            line-height: 20px;
+        }
+        
+        .nav-dropdown{
+            position: absolute;
+            display: none;
+            z-index: 1;
+            background-color: black;
+        }
+        
+        .nav-mobile{
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 70px;
+            width: 70px;
+        }
+        
+        #nav-toggle{
+            position: absolute;
+            left: 18px;
+            top: 22px;
+            cursor: pointer;
+            padding: 10px 35px 15px 0px;
+        }
+        
+        #nav-toggle span,
+        #nav-toggle span::before,
+        #nav-toggle span::after{
+            position: absolute;
+            display: block;
+            content: '';
+            background: black;
+            height: 5px;
+            width: 35px;
+            transition: all 300ms ease-in-out;
+        }
+        
+        #nav-toggle span::before{
+            top: -10px;
+        }
+        
+        #nav-toggle span::after{
+            bottom: -10px;
+        }
+        
+        #nav-toggle.active span{
+            background-color: transparent;
+        }
+        
+        #nav-toggle.active span::before, #nav-toggle.active span::after{
+            top: 0;
+        }
+        
+        #nav-toggle.active span::before{
+            transform: rotate(45deg);
+        }
+        
+        #nav-toggle.active span::after{
+            transform: rotate(-45deg);
+        }
+        
+        @media only screen and (max-width: 768px) {
+        
+            .nav-mobile{
+                display: block;
+            }
+        
+            nav{
+                width: 100%;
+                padding: 70px 0 15px;
+            }
+        
+            nav ul{
+                display: none;
+            }
+        
+            nav ul li {
+                float: none;
+            }
+        
+            nav ul li a{
+                padding: 15px;
+                line-height: 20px;
+                padding-left: 25%;
+            }
+        
+        
+            nav ul li ul li a{
+                padding-left: 30%;
+            }
+        
+            .nav-dropdown{
+                position: static;
+            }
+        }
+        
+        @media screen and (min-width: 799px){
+            .nav-list{
+                display: block !important;
+            }
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('nav ul li a:not(:only-child)').click(function(e) {
+                $(this).siblings('.nav-dropdown').toggle();
+                e.stopPropagation();
+            });
+        
+            $('html').click(function(){
+                $('.nav-dropdown').hide();
+            })
+            $('#nav-toggle').click(function(){
+                $('nav ul').slideToggle();
+            })
+            $('#nav-toggle').on('click', function(){
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+    <!-- Navbar End -->
+
+
+
+
+    <!-- Home Page -->
+     <section class="home" id="home">
+        <br><br><br><br><br><br><br>
+        <center>
+        <iframe width="80%" height="500px" src="https://www.youtube.com/embed/gi8XmLT41eM" title="OIL PAINTING TIME-LAPSE || “Blossom”" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </center>
+    </section>
+     <style>
+        .home{
+            height: 100vh;
+            background: url(https://64.media.tumblr.com/308c2fd4813c6f193dfed64e8222437a/7bb07dfa5f0a080f-93/s1280x1920/862451246d3a8c9f4f709b59cadc76a52e261f03.gif);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 10%;
+        }
+     </style>
+
+
+
+
+<!-- About Artist Page -->
+<!-- About Artist Page -->
+<section class="about" id="about">
+    <div class="about-container">
+        <h1>About Us</h1>
+        <div class="about-content">
+            <img src="https://media.istockphoto.com/id/1321486723/photo/japanese-man-spending-weekend-morning-painting-in-his-bedroom-at-home.jpg?s=612x612&w=0&k=20&c=vQNWXbNJ6xteAa33XmgBY4Uow0blGgCSl8gvRxuxSi4=" alt="Art Gallery" class="about-image">
+            <div class="about-text">
+                <p>Welcome to our gallery! We are dedicated to showcasing the finest artworks from talented artists around the world. Our mission is to provide a platform for artists to share their creativity and for art lovers to discover new pieces.</p>
+                <p>Our team is passionate about art and committed to supporting artists in their journey. We believe that art has the power to inspire, provoke thought, and bring people together.</p>
+                <p>Join us in celebrating creativity and exploring the beauty of art!</p>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .about {
+        padding: 50px 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .about-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .about h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .about p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: #555;
+    }
+
+    @media (max-width: 768px) {
+        .about-content {
+            flex-direction: column;
+        }
+
+        .about h1 {
+            font-size: 2em;
+        }
+
+        .about p {
+            font-size: 1em;
+        }
+    }
+</style>
+<!-- About Artist page end -->
+     
+
+
+
+    <!-- Gallary Page -->
+     <center>
+    <div class="container" id="gallary"><br><br>
+        <h1>Wy ArtWorks</h1>
+        <p>Immerse yourself in the captivating artwork of [Artist's Name], where emotion, nature, and imagination blend seamlessly. 
+            Each painting tells a distinct story, ranging from striking abstracts to intricate realism. Discover the full collection, 
+            request personalized commissions, and experience the profound beauty of art that resonates with the heart.</p>
+        <div class="slider-wrapper">
+          <button id="prev-slide" class="slide-button material-symbols-rounded">
+            <
+          </button>
+          <ul class="image-list">
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1HCWWRezxdAm9vfwhjBSGdQq0zykvlIvaQ&s" alt="img-1" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwj8Kcgm9WY4Vw3Y8F1sKwS3HlX6_69Q4qsA&s" alt="img-2" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTyMdYPkIo0kjPifB0v7VoHZiFECIuDZC9gg&s" alt="img-3" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQT236qM2xPIAM60sEf5WuBljjSFyX87bCw&s" alt="img-4" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLA8YPIW4VHBlHfvGH6O-50HpkBpAgKfwu6A&s" alt="img-5" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFyBpwEXD1iWnpSuteVkXsSYYw4XHfxpz1Ew&s" alt="img-6" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb-5EAau5fV4iXt81RVmyi-p8p7XeGIhH-kg&s" alt="img-7" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLNNywv5uADd8q7hMOyU-2oE2BWY-YSYKm6Q&s" alt="img-8" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUlZy6RMfZZkgBJ752OPQ-5JNGkbWMyrzaA&s" alt="img-9" />
+            <img class="image-item" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUgmV7elMPdaU98ajH9GvlSbZfc4bxv1P2ow&s" alt="img-10" />
+          </ul>
+          <button id="next-slide" class="slide-button material-symbols-rounded">
+            >
+          </button>
+        </div>
+        <p>{Drag the Images to slide the images}</p>
+        <div class="slider-scrollbar">
+          <div class="scrollbar-track">
+            <div class="scrollbar-thumb"></div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <section id="gallery" class="gallery-section">
+        <p class="about-description">
+            Discover the vibrant paintings of [Artist's Name], where emotion, nature, and creativity come alive. 
+            Each piece reflects a unique artistic journey, from bold abstracts to detailed realism. Explore the collection, 
+            commission custom works, and experience the beauty of art that speaks to the soul.</p>
+            <br>
+            <h1>My Other Art Works</h1>
+        <div class="gallery-content" style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-zdVwvWDvzvSz2ePxKKhf6dXXMS3RolNaZw&s" alt="Image 1" style="width: 23%; margin: 1%;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk8S8C7121BIftmGhwZ53BOs3EtD8zDC26Ag&s" alt="Image 2" style="width: 23%; margin: 1%;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQLQWqn0S-j36vJ0s1v2PfGKCgmNQUb8cv_A&s" alt="Image 3" style="width: 23%; margin: 1%;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgfmyh_lPesCA0X0-Z81lf1mqsq3NR74jCbg&s" alt="Image 4" style="width: 23%; margin: 1%;">
+        </div>
+       
+    </section>
+     </center>
+      <style>
+        .container {
+            max-width: 1200px;
+            width: 95%;
+          }
+          .slider-wrapper {
+            position: relative;
+          }
+          .slider-wrapper .slide-button {
+            position: absolute;
+            top: 50%;
+            outline: none;
+            border: none;
+            height: 50px;
+            width: 50px;
+            z-index: 5;
+            color: #fff;
+            display: flex;
+            cursor: pointer;
+            font-size: 2.2rem;
+            background: #000;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transform: translateY(-50%);
+          }
+          .slider-wrapper .slide-button:hover {
+            background: #404040;
+          }
+          .slider-wrapper .slide-button#prev-slide {
+            left: -25px;
+            display: none;
+          }
+          .slider-wrapper .slide-button#next-slide {
+            right: -25px;
+          }
+          .slider-wrapper .image-list {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 18px;
+            font-size: 0;
+            list-style: none;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+          }
+          .slider-wrapper .image-list::-webkit-scrollbar {
+            display: none;
+          }
+          .slider-wrapper .image-list .image-item {
+            width: 325px;
+            height: 400px;
+            object-fit: cover;
+          }
+          .container .slider-scrollbar {
+            height: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+          }
+          .slider-scrollbar .scrollbar-track {
+            background: #ccc;
+            width: 100%;
+            height: 2px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            position: relative;
+          }
+          .slider-scrollbar:hover .scrollbar-track {
+            height: 4px;
+          }
+          .slider-scrollbar .scrollbar-thumb {
+            position: absolute;
+            background: #000;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            cursor: grab;
+            border-radius: inherit;
+          }
+          .slider-scrollbar .scrollbar-thumb:active {
+            cursor: grabbing;
+            height: 8px;
+            top: -2px;
+          }
+          .slider-scrollbar .scrollbar-thumb::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -10px;
+            bottom: -10px;
+          }
+          @media only screen and (max-width: 1023px) {
+            .slider-wrapper .slide-button {
+              display: none !important;
+            }
+            .slider-wrapper .image-list {
+              gap: 10px;
+              margin-bottom: 15px;
+              scroll-snap-type: x mandatory;
+            }
+            .slider-wrapper .image-list .image-item {
+              width: 280px;
+              height: 380px;
+            }
+            .slider-scrollbar .scrollbar-thumb {
+              width: 20%;
+            }
+          }
+      </style>
+
+      <script>
+        const initSlider = () => {
+            const imageList = document.querySelector(".slider-wrapper .image-list");
+            const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
+            const sliderScrollbar = document.querySelector(".container .slider-scrollbar");
+            const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+            const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+            scrollbarThumb.addEventListener("mousedown", (e) => {
+                const startX = e.clientX;
+                const thumbPosition = scrollbarThumb.offsetLeft;
+                const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
+                
+                const handleMouseMove = (e) => {
+                    const deltaX = e.clientX - startX;
+                    const newThumbPosition = thumbPosition + deltaX;
+                    const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+                    const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
+                    
+                    scrollbarThumb.style.left = `${boundedPosition}px`;
+                    imageList.scrollLeft = scrollPosition;
+                }
+                const handleMouseUp = () => {
+                    document.removeEventListener("mousemove", handleMouseMove);
+                    document.removeEventListener("mouseup", handleMouseUp);
+                }
+                document.addEventListener("mousemove", handleMouseMove);
+                document.addEventListener("mouseup", handleMouseUp);
+            });
+            slideButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const direction = button.id === "prev-slide" ? -1 : 1;
+                    const scrollAmount = imageList.clientWidth * direction;
+                    imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+                });
+            });
+            const handleSlideButtons = () => {
+                slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "flex";
+                slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+            }
+            const updateScrollThumbPosition = () => {
+                const scrollPosition = imageList.scrollLeft;
+                const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+                scrollbarThumb.style.left = `${thumbPosition}px`;
+            }
+            imageList.addEventListener("scroll", () => {
+                updateScrollThumbPosition();
+                handleSlideButtons();
+            });
+        }
+        window.addEventListener("resize", initSlider);
+        window.addEventListener("load", initSlider);
+      </script>
+    <!-- Gallary Page End -->
+
+
+    <!-- Footer/contact Page -->
+    <footer class="footer-distributed" id="contact">
+
+        <div class="footer-left">
+    
+            <h3>Artist<span>Name</span></h3>
+    
+            <p class="footer-links">
+                <a href="#" class="link-1">Home</a>
+                
+                <a href="#">About Artist</a>
+            
+                <a href="#">Gallary</a>
+            
+                <a href="#">Contact</a>
+            </p>
+            <p class="footer-company-name">Company Name © 2015</p>
+        </div>
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Address</span>example address </p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+1.555.555.5555</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@company.com">support@company.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about" style="color: white;">
+                <span>About the company</span>
+                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+            </p>
+        </div>
+        <hr><br>
+        <!-- Table and form inside footer -->
+        <style>
+            table {
+            width: 50%;
+            color: white;
+            }
+            th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid white;
+            }
+        </style>
+        <center>
+        <div style="overflow-x:auto;">
+            <table>
+                <td>Thanks for Visiting This website</td>
+                <td>Thank you for visiting our website! We appreciate your time and interest. Come back soon!</td>
+            </tr>
+            </table>
+        </div>
+        <br><br>
+        <div class="contact-form-container">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" 
+                           name="name" 
+                           placeholder="Your Name" required>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" 
+                           name="email" 
+                           placeholder="Your Email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" 
+                           name="phone" 
+                           placeholder="Your Phone Number" required>
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" 
+                              name="message" 
+                              placeholder="Your Message" 
+                              rows="5" required></textarea>
+                    <span class="error-message" 
+                          id="messageError"></span>
+                </div>
+                <button type="submit" 
+                        class="submit-button">
+                  Send Message
+                </button>
+            </form>
+        </div></center> 
+
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const errorElements = document.querySelectorAll('.error-message');
+                errorElements.forEach(el => el.style.display = 'none');
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const message = document.getElementById('message').value.trim();
+                let isValid = true;
+                if (name === '') {
+                    document.getElementById('nameError').textContent = 'Name is required';
+                    document.getElementById('nameError').style.display = 'block';
+                    isValid = false;
+                }
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email === '' || !emailPattern.test(email)) {
+                    document.getElementById('emailError').textContent = 'Valid email is required';
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                }
+                const phonePattern = /^[0-9]{10}$/;
+                if (phone === '' || !phonePattern.test(phone)) {
+                    document.getElementById('phoneError').textContent = 'Valid phone number is required';
+                    document.getElementById('phoneError').style.display = 'block';
+                    isValid = false;
+                }
+                if (message === '') {
+                    document.getElementById('messageError').textContent = 'Message is required';
+                    document.getElementById('messageError').style.display = 'block';
+                    isValid = false;
+                }
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                }
+            });
+        </script>
+        </footer>
+
+
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+    
+    * {
+      font-family: Open Sans;
+    }
+    .footer-distributed{
+        background: #666;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 55px 50px;
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right{
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    
+    .footer-distributed .footer-left{
+        width: 40%;
+    }
+    
+    
+    
+    .footer-distributed h3{
+        color:  #ffffff;
+        font: normal 36px 'Open Sans', cursive;
+        margin: 0;
+    }
+    
+    .footer-distributed h3 span{
+        color:  lightseagreen;
+    }
+    
+    
+    
+    .footer-distributed .footer-links{
+        color:  #ffffff;
+        margin: 20px 0 12px;
+        padding: 0;
+    }
+    
+    .footer-distributed .footer-links a{
+        display:inline-block;
+        line-height: 1.8;
+      font-weight:400;
+        text-decoration: none;
+        color:  inherit;
+    }
+    
+    .footer-distributed .footer-company-name{
+        color:  #222;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    
+    .footer-distributed .footer-center{
+        width: 35%;
+    }
+    .footer-distributed .footer-center i{
+        background-color:  #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    .footer-distributed .footer-center i.fa-envelope{
+        font-size: 17px;
+        line-height: 38px;
+    }
+    .footer-distributed .footer-center p{
+        display: inline-block;
+        color: #ffffff;
+      font-weight:400;
+        vertical-align: middle;
+        margin:0;
+    }
+    .footer-distributed .footer-center p span{
+        display:block;
+        font-weight: normal;
+        font-size:14px;
+        line-height:2;
+    }
+    .footer-distributed .footer-center p a{
+        color:  lightseagreen;
+        text-decoration: none;;
+    }
+    .footer-distributed .footer-links a:before {
+      content: "|";
+      font-weight:300;
+      font-size: 20px;
+      left: 0;
+      color: #fff;
+      display: inline-block;
+      padding-right: 5px;
+    }
+    
+    .footer-distributed .footer-links .link-1:before {
+      content: none;
+    }
+    .footer-distributed .footer-right{
+        width: 20%;
+    }
+    
+    .footer-distributed .footer-company-about{
+        line-height: 20px;
+        color:  #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    .footer-distributed .footer-company-about span{
+        display: block;
+        color:  #ffffff;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .footer-distributed .footer-icons{
+        margin-top: 25px;
+    }
+    .footer-distributed .footer-icons a{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color:  #33383b;
+        border-radius: 2px;
+    
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+    
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    @media (max-width: 880px) {
+    
+        .footer-distributed{
+            font: bold 14px sans-serif;
+        }
+    
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right{
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+    
+        .footer-distributed .footer-center i{
+            margin-left: 0;
+        }
+    
+    } 
+    .contact-form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        width: 100%;
+    }
+    
+    .contact-form-container h2 {
+        margin-top: 0;
+        color: #333;
+        text-align: center;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    input, textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+    
+    textarea {
+        resize: vertical;
+    }
+    
+    .error-message {
+        color: red;
+        font-size: 0.875rem;
+        display: none; 
+    }
+    
+    .submit-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    
+    .submit-button:hover {
+        background-color: #218838;
+    }
+</style>
+<!-- footer end -->
+ <!-- table and form end -->
+
+
+</body>
+</html>
